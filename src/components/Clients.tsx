@@ -466,6 +466,9 @@ export default function Clients() {
                   alt={client.name}
                   className="w-20 h-20 rounded-full object-cover border-2 border-slate-800 relative z-10"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(client.name)}&background=0D1424&color=fff`;
+                  }}
                 />
               </div>
 

@@ -415,6 +415,14 @@ export default function YoutubePortfolio() {
                   alt={video.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
+                  onError={(e) => { 
+                    const target = e.target as HTMLImageElement; 
+                    if (target.src.includes('maxresdefault.jpg')) { 
+                      target.src = target.src.replace('maxresdefault.jpg', 'hqdefault.jpg'); 
+                    } else if (target.src.includes('hqdefault.jpg')) {
+                      target.src = 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800';
+                    }
+                  }}
                 />
                 
                 {/* Visual Glassmorphic gradient overlay */}
@@ -653,7 +661,7 @@ export default function YoutubePortfolio() {
                         </span>
                         {thumbnail ? (
                           <div className="relative aspect-video rounded-lg overflow-hidden border border-slate-800 bg-slate-900 group">
-                            <img src={thumbnail} alt="Extracted Preview" className="w-full h-full object-cover" />
+                            <img src={thumbnail} alt="Extracted Preview" className="w-full h-full object-cover" referrerPolicy="no-referrer" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=650'; }} />
                             <div className="absolute inset-x-0 bottom-0 bg-black/60 p-2 text-center text-[10px] text-white font-mono">
                               Auto generated from link ID
                             </div>
@@ -675,7 +683,7 @@ export default function YoutubePortfolio() {
                             onClick={() => setSelectedPresetUrl(img.url)}
                             className={`group relative aspect-video rounded-lg overflow-hidden border transition-all ${selectedPresetUrl === img.url ? 'border-red-500 ring-2 ring-red-500/20 scale-[0.97]' : 'border-slate-800 hover:border-slate-705'}`}
                           >
-                            <img src={img.url} alt={img.name} className="w-full h-full object-cover" />
+                            <img src={img.url} alt={img.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=650'; }} />
                             <div className="absolute inset-0 bg-black/45 flex items-end p-1.5 text-[7px] font-mono text-white tracking-tight truncate">
                               {img.name}
                             </div>
@@ -695,7 +703,7 @@ export default function YoutubePortfolio() {
                         />
                         {customThumbnailUrl && (
                           <div className="aspect-video rounded-lg overflow-hidden border border-slate-800 bg-slate-900 h-[100px] w-full">
-                            <img src={customThumbnailUrl} alt="Custom Preview" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=650'; }} />
+                            <img src={customThumbnailUrl} alt="Custom Preview" className="w-full h-full object-cover" referrerPolicy="no-referrer" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=650'; }} />
                           </div>
                         )}
                       </div>

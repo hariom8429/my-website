@@ -65,6 +65,9 @@ export default function Portfolio() {
                     className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                     id={`portfolio-item-img-${item.id}`}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800';
+                    }}
                   />
                   
                   <div className="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md p-2 rounded-xl border border-slate-800 shadow-md">
@@ -120,6 +123,9 @@ export default function Portfolio() {
                     alt={selectedPhoto.title}
                     className="w-full h-full object-contain"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800';
+                    }}
                   />
                 </div>
 

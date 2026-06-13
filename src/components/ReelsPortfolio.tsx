@@ -362,6 +362,9 @@ export default function ReelsPortfolio() {
                     className="w-full h-full object-cover origin-center transform group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                     id={`reel-card-img-${item.id}`}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-955/30 to-transparent" />
                 </div>
@@ -546,7 +549,7 @@ export default function ReelsPortfolio() {
                               onClick={() => setSelectedPresetUrl(img.url)}
                               className={`group relative aspect-[9/16] rounded-xl overflow-hidden border transition-all ${selectedPresetUrl === img.url ? 'border-rose-500 ring-2 ring-rose-500/25 scale-[0.97]' : 'border-slate-800'}`}
                             >
-                              <img src={img.url} alt={img.name} className="w-full h-full object-cover" />
+                              <img src={img.url} alt={img.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=650'; }} />
                               <div className="absolute inset-0 bg-black/25 flex items-end p-1.5 text-[8px] font-mono text-white tracking-tight truncate">
                                 {img.name}
                               </div>

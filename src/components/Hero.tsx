@@ -181,6 +181,9 @@ export default function Hero({ onOpenResume }: HeroProps) {
                   className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                   id="hero-profile-avatar"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800';
+                  }}
                 />
               </div>
             </motion.div>
