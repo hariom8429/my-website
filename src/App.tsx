@@ -17,6 +17,7 @@ import Contact from './components/Contact';
 import BackToTop from './components/BackToTop';
 import ResumeModal from './components/ResumeModal';
 import { AnimatePresence } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { Mail, Phone, Youtube, Award, ExternalLink, Calendar, Heart } from 'lucide-react';
 import { PROFILE_DATA } from './data';
 
@@ -48,6 +49,18 @@ export default function App() {
 
   return (
     <div className="bg-slate-950 min-h-screen text-slate-100 selection:bg-teal-500 selection:text-slate-950 font-sans antialiased overflow-x-hidden">
+      <Helmet>
+        <title>{PROFILE_DATA.name} | {PROFILE_DATA.titles[0]}</title>
+        <meta name="description" content={PROFILE_DATA.bio} />
+        <meta property="og:title" content={`${PROFILE_DATA.name} | ${PROFILE_DATA.titles[0]}`} />
+        <meta property="og:description" content={PROFILE_DATA.bio} />
+        <meta property="og:image" content={PROFILE_DATA.photo} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${PROFILE_DATA.name} | ${PROFILE_DATA.titles[0]}`} />
+        <meta name="twitter:description" content={PROFILE_DATA.bio} />
+        <meta name="twitter:image" content={PROFILE_DATA.photo} />
+      </Helmet>
       
       {/* 1. Header/Navigation Section */}
       <Header onOpenResume={() => setIsResumeOpen(true)} />
