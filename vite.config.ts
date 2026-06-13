@@ -25,7 +25,7 @@ export default defineConfig(() => {
                   const { videos, clients, reels } = data;
 
                   if (videos) {
-                    const filePath = path.resolve(__dirname, 'src/components/YoutubePortfolio.tsx');
+                    const filePath = path.resolve(process.cwd(), 'src/components/YoutubePortfolio.tsx');
                     let content = fs.readFileSync(filePath, 'utf-8');
                     // Find INITIAL_YOUTUBE_VIDEOS array and replace it cleanly on disk!
                     const regex = /const INITIAL_YOUTUBE_VIDEOS:\s*YoutubeVideoItem\[\]\s*=\s*\[[\s\S]*?\];/;
@@ -37,7 +37,7 @@ export default defineConfig(() => {
                   }
 
                   if (clients) {
-                    const filePath = path.resolve(__dirname, 'src/components/Clients.tsx');
+                    const filePath = path.resolve(process.cwd(), 'src/components/Clients.tsx');
                     let content = fs.readFileSync(filePath, 'utf-8');
                     // Find INITIAL_CLIENTS array and replace it cleanly on disk!
                     const regex = /const INITIAL_CLIENTS:\s*ClientItem\[\]\s*=\s*\[[\s\S]*?\];/;
@@ -49,7 +49,7 @@ export default defineConfig(() => {
                   }
 
                   if (reels) {
-                    const filePath = path.resolve(__dirname, 'src/components/ReelsPortfolio.tsx');
+                    const filePath = path.resolve(process.cwd(), 'src/components/ReelsPortfolio.tsx');
                     let content = fs.readFileSync(filePath, 'utf-8');
                     // Find DEFAULT_REELS array and replace it cleanly on disk!
                     const regex = /const DEFAULT_REELS:\s*ReelItem\[\]\s*=\s*\[[\s\S]*?\];/;
@@ -76,7 +76,7 @@ export default defineConfig(() => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(process.cwd(), '.'),
       },
     },
     server: {
